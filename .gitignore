@@ -5,18 +5,11 @@ function doPost(e) {
   var sh = gs.getSheetByName(sheetTarget);
   var lastRow = sh.getLastRow();
   var jsonString = e.postData.contents;
-  // return HtmlService.createHtmlOutput(200);
   json = JSON.parse("{\""+replaceAll(replaceAll(jsonString,"=","\": \""),"&","\",\"")+"\"}");
-  // save(sh, json, lastRow);
   Update_or_Insert(sh, json, lastRow)
-
 }
 
 function Update_or_Insert(sh, json, lastRow) {
-  // var workbooksheet = SpreadsheetApp.openById("1UbGTbxqzWzfc1e7P8v0LYGakSs-muMUNn4xePh_3pag");
-  // var sheet_form = workbooksheet.getSheetByName('APItoday');
-  // var json.id = sheet_form.getDataRange().getValues();
-  // var sh = workbooksheet.getSheetByName('Trang tính1');
   var database = sh.getDataRange().getValues();
   var newData = [];
   var k = database.length
